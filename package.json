@@ -1,0 +1,28 @@
+{
+  "name": "backup_fe",
+  "version": "1.0.0",
+  "description": "Another try to second deleiverable, testcafe one.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SylMoreno/Backup_FE.git"
+  },
+  "keywords": [
+    "testcafe",
+    "wizeline",
+    "deliverable"
+  ],
+  "author": "Silvia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SylMoreno/Backup_FE/issues"
+  },
+  "homepage": "https://github.com/SylMoreno/Backup_FE#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "testcafe": "^1.15.1"
+  }
+}
