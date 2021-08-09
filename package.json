@@ -4,7 +4,8 @@
   "description": "Another try to second deleiverable, testcafe one.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "login-feature": "testcafe chrome:headless,safari pom/tests/login.test.js --speed 0.3"
   },
   "repository": {
     "type": "git",

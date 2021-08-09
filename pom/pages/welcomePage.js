@@ -5,3 +5,5 @@ class  welcomePage{
         this.loginButton = Selector('a').withText("Log in")
     }
 }
+
+export default new welcomePage()
