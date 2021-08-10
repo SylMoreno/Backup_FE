@@ -23,7 +23,13 @@ export const ERROR_MESSAGE = {
     INVALID_EMAIL: "Invalid email address."
 }
 
-export const TASK_NUMBER = {
-    SINGLE: 1,
-    MULTIPLE: 10
+export const TASK = {
+    SINGLE: {
+        NUMBER:1,
+        NAME: "SINGLE TASK"
+    },
+    MULTIPLE: {
+        NUMBER:10,
+        NAME: "MULTIPLE TASK"
+    }
 }
