@@ -22,28 +22,26 @@ class todayPage{
     }
 
     async addNewTask(TASK_NUMBER, TASK_NAME){
-            if(TASK_NUMBER == 1){
+        if(TASK_NUMBER == 1){
+            await t
+            .click(this.addTaskIcon)
+            .typeText(this.taskTitleField, TASK_NAME, {paste: true})
+            .pressKey('enter')
+            .pressKey('esc')
+            await t.expect(await this.validateTaskNumber(TASK_NUMBER)).ok()
+        }
+        else {
+            for(let i = 1; i <= TASK_NUMBER; i++){
                 await t
                 .click(this.addTaskIcon)
                 .typeText(this.taskTitleField, TASK_NAME, {paste: true})
                 .pressKey('enter')
                 .pressKey('esc')
-                await t.expect(await this.validateTaskNumber(TASK_NUMBER)).ok()
             }
-            else {
-                for(let i = 1; i <= TASK_NUMBER; i++){
-                    await t
-                    .click(this.addTaskIcon)
-                    .typeText(this.taskTitleField, TASK_NAME, {paste: true})
-                    .pressKey('enter')
-                    .pressKey('esc')
-                }
-                await t.expect(await this.validateTaskNumber(TASK_NUMBER)).ok()
-            }
+            await t.expect(await this.validateTaskNumber(TASK_NUMBER)).ok()
         }
-
-
-
+    }
+    
     async deleteAllTasks(taskLabel){
         let totalTasks = await this.taskLabel.count
     
