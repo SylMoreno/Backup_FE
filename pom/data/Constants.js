@@ -26,10 +26,17 @@ export const ERROR_MESSAGE = {
 export const TASK = {
     SINGLE: {
         NUMBER:1,
-        NAME: "SINGLE TASK"
+        DUE: {
+            TODAY: "Today",
+            TOMORROW: "Tomorrow"
+        },
+        NAME: "SINGLE TASK",
     },
     MULTIPLE: {
         NUMBER:10,
+        DUE: {
+            TODAY: "Today"
+        },
         NAME: "MULTIPLE TASK"
-    }
+    },
 }
