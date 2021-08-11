@@ -10,7 +10,7 @@ fixture('Login feature test')
     await t.click(welcomePage.loginButton)
 })
 
-test("As a user, I should be able to log in successfully using valid credentials", async t=>{
+test.meta('type', 'smoke')("As a user, I should be able to log in successfully using valid credentials", async t=>{
     
     await loginPage.submitLoginForm(CREDENTIALS.VALID_USER.MAIL,CREDENTIALS.VALID_USER.PASSWORD)
     await t.wait(5000)
@@ -22,7 +22,7 @@ test("As a valid user, I should not be able to log if I am not providing credent
     await t.expect(loginPage.errorMessage.innerText).contains(ERROR_MESSAGE.INVALID_EMAIL)
 })
 
-test("As a valid user, I should not be able to log using a wrong password", async t=>{
+test.meta('type', 'smoke')("As a valid user, I should not be able to log using a wrong password", async t=>{
     await loginPage.submitLoginForm(CREDENTIALS.VALID_USER.MAIL,CREDENTIALS.INVALID_USER.PASSWORD)
     await t.expect(loginPage.errorMessage.innerText).contains(ERROR_MESSAGE.WRONG_CREDENTIALS)
 })

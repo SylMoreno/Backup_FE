@@ -4,10 +4,14 @@
   "description": "Another try to second deleiverable, testcafe one.",
   "main": "index.js",
   "scripts": {
-    "run-all-tests": "testcafe chrome,safari pom/tests",
+    "run-all-tests": "testcafe chrome:headless pom/tests --reporter html:Reports/report.html",
     "login-feature": "testcafe chrome:headless,firefox:headless,safari pom/tests/login.test.js --speed 0.3",
     "add-NewTask-feature": "testcafe chrome:headless pom/tests/addSingleNewTask.test.js --speed 0.3",
-    "add-MultipleNewTask-feature": "testcafe chrome pom/tests/addMultipleNewTasks.test.js --speed 0.3"
+    "add-MultipleNewTask-feature": "testcafe chrome pom/tests/addMultipleNewTasks.test.js --speed 0.3",
+    "add-NewProject-feature": "testcafe chrome pom/tests/createProject.test.js --speed 0.3",
+    "test-smoke": "testcafe chrome:headless pom/tests --test-meta type=smoke --reporter html:Reports/report.html",
+    "lint": "eslint ./pom",
+    "lint-init": "eslint --init"
   },
   "repository": {
     "type": "git",
@@ -26,6 +30,12 @@
   "homepage": "https://github.com/SylMoreno/Backup_FE#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "testcafe": "^1.15.1"
+    "testcafe": "^1.15.1",
+    "testcafe-reporter-html": "^1.4.6"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-testcafe": "^0.2.1"
   }
 }

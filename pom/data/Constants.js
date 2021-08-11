@@ -40,3 +40,16 @@ export const TASK = {
         NAME: "MULTIPLE TASK"
     },
 }
+
+export const PROJECT = {
+    NAME: "Test project",
+    COLOR: {
+        BERRY_RED: {
+            NAME: "Berry Red",
+            RGB: "rgb(184, 37, 95)"},
+        RED: "rgb(219, 64, 53)",
+        ORANGE: "rgb(255, 153, 51)",
+        YELLOW: "rgb(250, 208, 0)",
+        OLIVE_GREEN: "rgb(175, 184, 59)"
+    }
+}

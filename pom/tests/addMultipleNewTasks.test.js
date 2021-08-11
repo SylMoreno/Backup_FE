@@ -3,7 +3,7 @@ import { TASK } from '../data/Constants'
 import todayPage from '../pages/todayPage'
 import inboxPage from '../pages/inboxPage'
 
-fixture('Add task feature test')
+fixture('Add multiple tasks feature test')
     .beforeEach(async t=> {
         await t.useRole(validUser)
         await inboxPage.deleteAllTasks(inboxPage.inboxTaskLabels)
