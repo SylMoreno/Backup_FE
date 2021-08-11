@@ -65,14 +65,15 @@ class todayPage{
                     await t.expect(await this.validateTaskNumber(TASK_NUMBER)).ok()
                 }
                 else {
+                    await t.click(sidebarOptions.todayButton)
                     for(let i = 1; i <= TASK_NUMBER; i++){
                         await t
                         .click(this.addTaskIcon)
-                        .typeText(this.taskTitleField, TASK_NAME, {paste: true})
+                        .typeText(this.taskTitleField, "{" + i + "} " + TASK_NAME, {paste: true})
                         .pressKey('enter')
                         .pressKey('esc')
+                        await t.expect(this.taskLabel.nth(i - 1).innerText).contains("{" + i + "} " + TASK_NAME)
                     }
-                    await t.expect(await this.validateTaskNumber(TASK_NUMBER)).ok()
                 }
                 break;
         }

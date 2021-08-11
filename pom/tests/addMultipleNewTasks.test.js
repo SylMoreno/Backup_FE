@@ -11,5 +11,5 @@ fixture('Add task feature test')
 
 test('As a valid user, I should be able to add multiple new tasks', async t=> {
     await todayPage.addNewTask(TASK.MULTIPLE.NUMBER, TASK.MULTIPLE.DUE.TODAY, TASK.MULTIPLE.NAME)
-    await t.expect(todayPage.taskLabel.innerText).contains(TASK.SINGLE.NAME)
+    await t.expect(await todayPage.validateTaskNumber(TASK.MULTIPLE.NUMBER)).ok()
 })

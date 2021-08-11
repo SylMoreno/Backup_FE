@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "run-all-tests": "testcafe chrome,safari pom/tests",
-    "login-feature": "testcafe chrome:headless,safari pom/tests/login.test.js --speed 0.3",
+    "login-feature": "testcafe chrome:headless,firefox:headless,safari pom/tests/login.test.js --speed 0.3",
     "add-NewTask-feature": "testcafe chrome:headless pom/tests/addSingleNewTask.test.js --speed 0.3",
     "add-MultipleNewTask-feature": "testcafe chrome pom/tests/addMultipleNewTasks.test.js --speed 0.3"
   },
