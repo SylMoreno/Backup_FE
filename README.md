@@ -35,6 +35,6 @@ This is the repository for the second Deliverable of Wizeline's qa-bootcamp
 6. Use `lint` for estatic analysis
 
 ## Be aware to create your own .env file pom level. The following constants are used:
-- BASE_URL to refer page's Url
-- STANDARD_USER_MAIL to indicate the email that you'd be using to perform the tests. (create an account before start)
-- STANDARD_USER_PASSWORD to indicate the password you'll be using to log successfully.
+- BASE_URL=https://www.todoist.com/
+- VALID_MAIL=youremail@email.com. (create an account before start)
+- VALID_PASSWORD=yourpassword
