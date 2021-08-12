@@ -7,6 +7,8 @@ fixture('Add multiple tasks feature test')
     .beforeEach(async t => {
         await t.useRole(validUser)
         await inboxPage.deleteAllTasks(inboxPage.inboxTaskLabels)
+        await t.expect(inboxPage.inboxTaskLabels.exists).notOk()
+        await t.wait(3000)
     })
 
 test('As a valid user, I should be able to add multiple new tasks', async t => {

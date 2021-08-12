@@ -7,6 +7,8 @@ fixture('Add task feature test')
     .beforeEach(async t => {
         await t.useRole(validUser)
         await inboxPage.deleteAllTasks(inboxPage.inboxTaskLabels)
+        await t.expect(inboxPage.inboxTaskLabels.exists).notOk()
+        await t.wait(3000)
     })
 
 test.meta('type', 'smoke')('As a valid user, I should be able to add a new task with Today as due date', async t => {
