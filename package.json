@@ -10,6 +10,7 @@
     "add-MultipleNewTask-feature": "testcafe chrome pom/tests/addMultipleNewTasks.test.js --speed 0.3",
     "add-NewProject-feature": "testcafe chrome pom/tests/createProject.test.js --speed 0.3",
     "test-smoke": "testcafe chrome:headless pom/tests --test-meta type=smoke --reporter html:Reports/report.html",
+    "newman": "newman run API_Challenge/Challenge.postman_collection.json -e API_Challenge/environment.json",
     "lint": "eslint --plugin eslint-plugin-testcafe  ./pom",
     "lint-init": "eslint --init"
   },
@@ -36,6 +37,7 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-testcafe": "^0.2.1"
+    "eslint-plugin-testcafe": "^0.2.1",
+    "newman": "^5.2.4"
   }
 }

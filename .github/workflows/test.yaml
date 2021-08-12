@@ -1,0 +1,13 @@
+name: API testing CI/CD
+on: [push]
+jobs:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Verify repo
+    uses: actions/checkout@v2
+    - name: Set node
+    uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+    - run: npm install -g newman
+    - run: npm run run-newman-local

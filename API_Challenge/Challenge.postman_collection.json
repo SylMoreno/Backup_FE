@@ -1,0 +1,1182 @@
+{
+	"info": {
+		"_postman_id": "ffb8ccf6-b0d1-43af-830d-d973ffa94d28",
+		"name": "Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Get all projects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"//Status codes",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//Positive JSON eschema",
+									"pm.test(\"Validate positive JSON eschema\", function () {",
+									"    const jsonSchema = {",
+									"        \"properties\": {",
+									"            //\"id\": {\"type\": \"numeric\"},",
+									"            \"name\": {\"type\": \"string\"},",
+									"            \"favorite\": {\"type\": \"boolean\"}",
+									"        }",
+									"    };",
+									"",
+									"    pm.response.to.have.jsonSchema(jsonSchema);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/rest/v1/projects",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"project_id\", jsonData.id);",
+									"",
+									"//Status codes",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//Positive JSON eschema",
+									"pm.test(\"Validate positive JSON eschema\", function () {",
+									"    const jsonSchema = {",
+									"        \"properties\": {",
+									"            //\"id\": {\"type\": \"string\"},",
+									"            \"name\": {\"type\": \"string\"},",
+									"            \"favorite\": {\"type\": \"boolean\"}",
+									"        }",
+									"    };",
+									"",
+									"    pm.response.to.have.jsonSchema(jsonSchema);",
+									"});",
+									"",
+									"//Headers validation",
+									"pm.test(\"Response's headers matches with Request's headers\", function () {",
+									"    const expectedHeader = pm.request.headers.get('Content-Type', 'Content-Lenght', 'Connection');",
+									"    const responseHeader = pm.response.headers.get('Content-Type', 'Content-Lenght', 'Connection');",
+									"    pm.expect(responseHeader).to.equals(expectedHeader);",
+									"});",
+									"",
+									"pm.test(\"Validate single header content\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\"application/json\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"name\", \"Another debt\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Uf!\",\n    \"color\": 20\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/rest/v1/projects",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"projects"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{project_name}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Status codes",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//Positive JSON eschema",
+									"pm.test(\"Validate positive JSON eschema\", function () {",
+									"    const jsonSchema = {",
+									"        \"properties\": {",
+									"            //\"id\": {\"type\": \"numeric\"},",
+									"            \"name\": {\"type\": \"string\"},",
+									"            \"favorite\": {\"type\": \"boolean\"}",
+									"        }",
+									"    };",
+									"",
+									"    pm.response.to.have.jsonSchema(jsonSchema);",
+									"});",
+									"",
+									"pm.test(\"One item's JSON value\", function () {",
+									"    var value = pm.environment.get(\"project_id\");",
+									"    pm.expect(pm.response.text()).to.include(value);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/rest/v1/projects/{{project_id}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"projects",
+								"{{project_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update project",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204 - No Content\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Changed name\",\n    \"color\": 9\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/rest/v1/projects/{{project_id}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"projects",
+								"{{project_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Status codes",
+									"pm.test(\"Status code is 204 - No content\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/rest/v1/projects/{{project_id}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"projects",
+								"{{project_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Requests' response time is lower than 700ms\", function(){",
+							"    pm.expect(pm.response.responseTime).to.be.below(700)",
+							"})",
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Get all active tasks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Status codes",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//Positive JSON eschema",
+									"pm.test(\"Validate positive JSON eschema\", function () {",
+									"    const jsonSchema = {",
+									"        \"properties\": {",
+									"            \"id\": {\"type\": \"integer\"},",
+									"            \"content\": {\"type\": \"string\"},",
+									"            \"description\": {\"type\": \"string\"}",
+									"        }",
+									"    };",
+									"",
+									"    pm.response.to.have.jsonSchema(jsonSchema);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/rest/v1/tasks",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"task_id\", jsonData.id);",
+									"",
+									"//Status codes",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//Positive JSON eschema",
+									"pm.test(\"Validate positive JSON eschema\", function () {",
+									"    const jsonSchema = {",
+									"        \"properties\": {",
+									"            \"id\": {\"type\": \"integer\"},",
+									"            \"content\": {\"type\": \"string\"},",
+									"            \"priority\": {\"type\": \"integer\"}",
+									"        }",
+									"    };",
+									"",
+									"    pm.response.to.have.jsonSchema(jsonSchema);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"content\": \"New task from endpoint\", \n        \"due_lang\": \"en\", \n        \"priority\": 2\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/rest/v1/tasks",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Status codes",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//Positive JSON schema",
+									"pm.test(\"Validate positive JSON eschema\", function () {",
+									"    const jsonSchema = {",
+									"        \"properties\": {",
+									"            \"id\": {\"type\": \"integer\"},",
+									"            \"content\": {\"type\": \"string\"},",
+									"            \"description\": {\"type\": \"string\"}",
+									"        }",
+									"    };",
+									"",
+									"    pm.response.to.have.jsonSchema(jsonSchema);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/rest/v1/tasks/{{task_id}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"tasks",
+								"{{task_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Status codes",
+									"pm.test(\"Status code is 204 - No content\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"updating updating...\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/rest/v1/tasks/{{task_id}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"tasks",
+								"{{task_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Close task",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Status codes",
+									"pm.test(\"Status code is 204 - No content\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{Url}}/rest/v1/tasks/{{task_id}}/close",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"tasks",
+								"{{task_id}}",
+								"close"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reopen task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Status codes",
+									"pm.test(\"Status code is 204 - No content\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/rest/v1/tasks/{{task_id}}/reopen",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"tasks",
+								"{{task_id}}",
+								"reopen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Status codes",
+									"pm.test(\"Status code is 204 No content\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/rest/v1/tasks/{{task_id}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"tasks",
+								"{{task_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Requests' respsonse time is lower than 700ms\", function(){",
+							"    pm.expect(pm.response.responseTime).to.be.below(700)",
+							"})"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Negative scenarios",
+			"item": [
+				{
+					"name": "Projects",
+					"item": [
+						{
+							"name": "Project's not found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//Status codes",
+											"pm.test(\"Status code is 404 Not found\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Body matches string\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Not Found\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"unexistingId\", 98765)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/rest/v1/projects/{{unexistingId}}",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"rest",
+										"v1",
+										"projects",
+										"{{unexistingId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Blank name project",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"pm.environment.set(\"project_id\", jsonData.id);",
+											"//pm.environment.unset(\"name\");",
+											"",
+											"//Status codes",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"//Content type",
+											"pm.test(\"Content-Type is application/json\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\", \"application/json\");",
+											"});",
+											"",
+											"pm.test(\"Default NOT SET name\", function () {",
+											"    pm.expect(jsonData.name).to.include(\"NOT SET\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.environment.get(\"name\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \" \",\n    \"color\":30\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/rest/v1/projects",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"rest",
+										"v1",
+										"projects"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "{{project_name}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update without sending parameters",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400 Bad Request\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Update message is correct\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"At least one of name, color or favorite fields should be set\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/rest/v1/projects/{{project_id}}",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"rest",
+										"v1",
+										"projects",
+										"{{project_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Error message is correct (invalid id, special chars)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//Status codes",
+											"pm.test(\"Status code is 404 Not Found\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/rest/v1/projects/2222.",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"rest",
+										"v1",
+										"projects",
+										"2222."
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tasks",
+					"item": [
+						{
+							"name": "Priority can't be higher than 4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//Status codes",
+											"pm.test(\"Status code is 400 Bad Request\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"//Body message",
+											"pm.test(\"Body matches string\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Unsupported priority value\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"content\": \"New task from endpoint\", \n        \"due_lang\": \"en\", \n        \"priority\": 25\n        }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/rest/v1/tasks",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"rest",
+										"v1",
+										"tasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a task Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//Status codes",
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/rest/v1/tasks/24",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"rest",
+										"v1",
+										"tasks",
+										"24"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send empty field to update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//Status codes",
+											"pm.test(\"Status code is 400 Bad Request\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message is correct\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"At least one of supported fields should be set and non-empty\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/rest/v1/tasks/{{task_id}}",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"rest",
+										"v1",
+										"tasks",
+										"{{task_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Close unexistant task",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//Status codes",
+											"pm.test(\"Status code is 4xx for invalid id\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{Url}}/rest/v1/tasks/00000/close",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"rest",
+										"v1",
+										"tasks",
+										"00000",
+										"close"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reopen task Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//Status codes",
+											"pm.test(\"Status code is 4xx for invalid id\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/rest/v1/tasks/0000/reopen",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"rest",
+										"v1",
+										"tasks",
+										"0000",
+										"reopen"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Correct code for invalid id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//Status codes",
+											"pm.test(\"Status code is 4xx for invalid id\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/rest/v1/tasks/00000",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"rest",
+										"v1",
+										"tasks",
+										"00000"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
