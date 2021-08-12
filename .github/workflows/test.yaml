@@ -15,6 +15,7 @@ jobs:
         - run: npm run newman
 
   slackNotification:
+    needs: Api-Tests
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
