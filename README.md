@@ -1,5 +1,6 @@
 # FrontendChallenge
 This is the repository for the second Deliverable of Wizeline's qa-bootcamp
+### Btw... it's alive on Jenkins! See: https://drive.google.com/file/d/1_ttRQqIHd_7nQP5SMqnlFbJB_Zqs9wUM/view?usp=sharing
 
 ## Initialize the project in your computer
 - Create a folder where to allocate project and open it (you can use git bash or IDE console)
