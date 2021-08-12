@@ -6,11 +6,11 @@ export const URL = {
 }
 
 export const CREDENTIALS = {
-    VALID_USER:{
+    VALID_USER: {
         MAIL: process.env.VALID_MAIL,
         PASSWORD: process.env.VALID_PASSWORD
     },
-    INVALID_USER:{
+    INVALID_USER: {
         MAIL: "wrongemail@mailto.com",
         PASSWORD: "wrongpass123",
         NULL_FIELD: null
@@ -25,28 +25,30 @@ export const ERROR_MESSAGE = {
 
 export const TASK = {
     SINGLE: {
-        NUMBER:1,
+        NUMBER: 1,
         DUE: {
             TODAY: "Today",
             TOMORROW: "Tomorrow"
         },
-        NAME: "SINGLE TASK",
+        NAME: "SINGLE TASK"
     },
     MULTIPLE: {
-        NUMBER:10,
+        NUMBER: 10,
         DUE: {
             TODAY: "Today"
         },
         NAME: "MULTIPLE TASK"
-    },
+    }
 }
 
 export const PROJECT = {
     NAME: "Test project",
     COLOR: {
-        BERRY_RED: {
+        BERRY_RED: 
+        {
             NAME: "Berry Red",
-            RGB: "rgb(184, 37, 95)"},
+            RGB: "rgb(184, 37, 95)"
+        },
         RED: "rgb(219, 64, 53)",
         ORANGE: "rgb(255, 153, 51)",
         YELLOW: "rgb(250, 208, 0)",
