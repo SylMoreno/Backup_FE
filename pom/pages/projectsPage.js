@@ -6,6 +6,9 @@ class projectsPage{
     constructor(){
         this.projectName = Selector('input[id="edit_project_modal_field_name"]')
         this.colorList = Selector('button[class="color_dropdown_toggle"]')
+        this.selectedColorLabel = Selector('span[class="color_dropdown_select__name"]')
+        this.favoriteToggle = Selector('input[name="is_favorite"]')
+        this.addProjectButton = Selector('button').withText("Add")
         // Delete method selectors
         this.projectLabelOptions = Selector('td[class="menu"]')
         this.deleteProjectOption = Selector('#menu_delete_text')
@@ -27,9 +30,16 @@ class projectsPage{
 
     async createNewProject(PROJECT_NAME, PROJECT_COLOR){
         await t
-        .click(this.plusProjectIcon)
+        .click(sidebarOptions.plusProjectIcon)
         .typeText(this.projectName, PROJECT_NAME, {paste: true})
+        await this.selectColor(PROJECT_COLOR)
+        .click()
+    }
+
+    async selectColor(PROJECT_COLOR){
+        await t
         .click(this.colorList)
+        .click(this.selectedColorLabel.innerText.withText(PROJECT_COLOR))
     }
 }
 
