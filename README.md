@@ -28,12 +28,15 @@ This is the repository for the second Deliverable of Wizeline's qa-bootcamp
   * Reports
 
 ## Feature testing scripts
-1. Use `chrome-all-tests: "testcafe chrome:headless pom/tests --reporter html:Reports/report.html` to run all tests
-2. Use `chrome-login-test` to perform all login tests available (chrome browser)
-3. Use `chrome-addNewTask-test` to perform all *create new tasks*' tests requested (chrome browser)
-4. Use `chrome-addnewProject-test` to perform all *create new project* test requested (chrome browser)
-5. Use `chrome-smoke-testing` to only run smoke tests
-6. Use `lint` for estatic analysis
+1. Use `run-all-tests` to run all tests, headless mode
+2. Use `login-feature-chrome` to perform all login tests available (chrome browser, headless mode)
+3. Use `login-feature-multibrowser`to perform all login tests with chrome, firefox and safari browsers
+4. Use `add-NewTask-feature` to perform all *create new tasks*' tests requested (chrome browser)
+5. Use `add-NewProject-feature` to perform all *create new project* test requested (chrome browser)
+6. Use `test-smoke` to only run tests with type="smoke"
+7. Use `newman`to run API testing
+8. Use `lint-init`to initialize lint
+9. Use `lint` for perform static analysis
 
 ## Be aware to create your own .env file pom level. The following constants are used:
 - `BASE_URL=https://www.todoist.com/`
