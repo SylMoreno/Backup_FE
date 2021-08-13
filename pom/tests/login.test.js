@@ -1,5 +1,4 @@
 import {URL, CREDENTIALS, ERROR_MESSAGE} from '../data/Constants' 
-
 import welcomePage from '../pages/welcomePage'
 import loginPage from '../pages/loginPage'
 import todayPage from '../pages/todayPage'

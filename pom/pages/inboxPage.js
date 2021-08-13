@@ -1,5 +1,5 @@
 import { Selector, t } from 'testcafe'
-import sidebarOptions from './sidebarOptions'
+import basePage from './basePage'
 
 class inboxPage {
     constructor(){
@@ -9,7 +9,7 @@ class inboxPage {
     }
 
     async deleteAllTasks(){
-        await t.click(sidebarOptions.inboxButton)
+        await t.click(basePage.inboxButton)
         let totalTasks = await this.inboxTaskLabels.count
         if (totalTasks > 0) {
             do {

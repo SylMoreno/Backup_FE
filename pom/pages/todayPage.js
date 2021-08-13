@@ -1,5 +1,5 @@
 import {Selector, t} from 'testcafe'
-import sidebarOptions from './sidebarOptions'
+import basePage from './basePage'
 
 class todayPage{
     constructor(){
@@ -29,27 +29,27 @@ class todayPage{
             case "Tomorrow":
                 if(TASK_NUMBER == 1){
                     await t
-                    .click(sidebarOptions.todayButton)
+                    .click(basePage.todayButton)
                     .click(this.addTaskIcon)
                     .typeText(this.taskTitleField, TASK_NAME, {paste: true})
                     .click(this.taskCalendarIcon)
                     .click(this.calendarTomorrowOption)
                     .pressKey('enter')
                     .pressKey('esc')
-                    .click(sidebarOptions.inboxButton)
+                    .click(basePage.inboxButton)
                     await t.expect(await this.validateTaskNumber(TASK_NUMBER)).ok()
                 }
                 else {
                     for(let i = 1; i <= TASK_NUMBER; i++){
                         await t
-                        .click(sidebarOptions.todayButton)
+                        .click(basePage.todayButton)
                         .click(this.addTaskIcon)
                         .typeText(this.taskTitleField, i + TASK_NAME, {paste: true})
                         .click(this.taskCalendarIcon)
                         .click(this.calendarTomorrowOption)
                         .pressKey('enter')
                         .pressKey('esc')
-                        .click(sidebarOptions.inboxButton)
+                        .click(basePage.inboxButton)
                     }
                     await t.expect(await this.validateTaskNumber(TASK_NUMBER)).ok()
                 }
@@ -57,7 +57,7 @@ class todayPage{
             case "Today":
                 if(TASK_NUMBER == 1){
                     await t
-                    .click(sidebarOptions.todayButton)
+                    .click(basePage.todayButton)
                     .click(this.addTaskIcon)
                     .typeText(this.taskTitleField, TASK_NAME, {paste: true})
                     .pressKey('enter')
@@ -65,7 +65,7 @@ class todayPage{
                     await t.expect(await this.validateTaskNumber(TASK_NUMBER)).ok()
                 }
                 else {
-                    await t.click(sidebarOptions.todayButton)
+                    await t.click(basePage.todayButton)
                     for(let i = 1; i <= TASK_NUMBER; i++){
                         await t
                         .click(this.addTaskIcon)

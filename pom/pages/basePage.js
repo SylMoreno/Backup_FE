@@ -1,6 +1,6 @@
 import { Selector, t } from 'testcafe'
 
-class sidebarOptions{
+class basePage {
     constructor(){
         //Left Menu options
         this.inboxButton = Selector('#filter_inbox')
@@ -32,4 +32,4 @@ class sidebarOptions{
     }
 }
 
-export default new sidebarOptions()
+export default new basePage()

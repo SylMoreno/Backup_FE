@@ -1,5 +1,4 @@
 import {Selector, t} from'testcafe'
-import { CREDENTIALS, ERROR_MESSAGE } from '../data/Constants'
 
 class loginPage{
     constructor(){
