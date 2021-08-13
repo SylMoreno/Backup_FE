@@ -6,8 +6,7 @@
   "scripts": {
     "run-all-tests": "testcafe chrome:headless pom/tests --reporter html:Reports/report.html",
     "login-feature": "testcafe chrome:headless,firefox:headless,safari pom/tests/login.test.js",
-    "add-NewTask-feature": "testcafe chrome:headless pom/tests/addSingleNewTask.test.js",
-    "add-MultipleNewTask-feature": "testcafe chrome pom/tests/addMultipleNewTasks.test.js",
+    "add-NewTask-feature": "testcafe chrome:headless pom/tests/addNewTask.test.js",
     "add-NewProject-feature": "testcafe chrome pom/tests/createProject.test.js",
     "test-smoke": "testcafe chrome:headless pom/tests --test-meta type=smoke --reporter html:Reports/report.html",
     "newman": "newman run API_Challenge/Challenge.postman_collection.json -e API_Challenge/environment.json",

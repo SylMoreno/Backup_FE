@@ -3,12 +3,6 @@ import sidebarOptions from './sidebarOptions'
 
 class projectsPage{
     constructor(){
-        //Project's creation
-        this.projectName = Selector('input[id="edit_project_modal_field_name"]')
-        this.colorList = Selector('div[class="form_field"]').find('button')
-        this.selectedColorLabel = Selector('span[class="color_dropdown_select__name"]')
-        this.favoriteToggle = Selector('.reactist_switch')
-        this.addProjectButton = Selector('button[class="ist_button ist_button_red"]').withText("Add")
         //Projects details
         this.editProjectButton = Selector('div[class="icon_menu_item__content"]').withText("Edit project")
         // Delete method selectors
@@ -38,9 +32,9 @@ class projectsPage{
         .click(this.editProjectButton)
 
         let targetProject = {
-            name: await this.projectName.value,
-            color: await this.colorList.innerText,
-            isFavorite: await this.favoriteToggle.hasClass('reactist_switch--checked')
+            name: await sidebarOptions.projectName.value,
+            color: await sidebarOptions.colorList.innerText,
+            isFavorite: await sidebarOptions.favoriteToggle.hasClass('reactist_switch--checked')
         }
 
         if(targetProject.name == PROJECT_NAME && targetProject.color == PROJECT_COLOR && targetProject.isFavorite == favoriteFlag){
@@ -50,20 +44,6 @@ class projectsPage{
             return false
         }
     }
-
-    async createNewProject(PROJECT_NAME, PROJECT_COLOR, isFavorite=false){
-        await t
-        .hover(sidebarOptions.sectionName)
-        .click(sidebarOptions.plusProjectIcon)
-        .typeText(this.projectName, PROJECT_NAME, {paste: true})
-        .click(this.colorList)
-        .click(this.selectedColorLabel.withText(PROJECT_COLOR))
-        if(isFavorite == true){
-            await t.click(this.favoriteToggle)
-        }
-        await t.click(this.addProjectButton)
-    }
-
 }
 
 export default new projectsPage()

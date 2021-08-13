@@ -21,3 +21,8 @@ test('As a valid user, I should be able to add a new task with Tomorrow as due d
     await t.expect(todayPage.taskLabel.innerText).contains(TASK.SINGLE.NAME)
     await t.expect(inboxPage.dueDateSublabel.innerText).contains(TASK.SINGLE.DUE.TOMORROW)
 })
+
+test.meta('type', 'smoke')('As a valid user, I should be able to add multiple new tasks', async t => {
+    await todayPage.addNewTask(TASK.MULTIPLE.NUMBER, TASK.MULTIPLE.DUE.TODAY, TASK.MULTIPLE.NAME)
+    await t.expect(await todayPage.validateTaskNumber(TASK.MULTIPLE.NUMBER)).ok()
+})

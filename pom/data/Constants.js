@@ -42,22 +42,12 @@ export const TASK = {
 }
 
 export const PROJECT = {
-    NAME: "Test project",
-    COLOR: {
-        BERRY_RED: 
-        {
-            NAME: "Berry Red"
-        },
-        RED: {
-            NAME: "Red"
-        },
-        ORANGE: {
-            NAME: "Orange"
-        },
-        YELLOW: {
-            NAME: "Yellow"
-        }
-    },
-    FAVORITE: true,
-    NON_FAVORITE: false
+    FAVORITE: 
+        {NAME: "Current favorite",
+        COLOR: "Yellow",
+        IS_FAVORITE: true},
+    NON_FAVORITE: 
+        {NAME: "Current regular",
+        COLOR: "Violet",
+        IS_FAVORITE: false}
 }

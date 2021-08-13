@@ -12,7 +12,7 @@ fixture('Create a new project feature test')
     })
 
 test.meta('type', 'smoke')('As a valid user, I should be able to create a new project, favorite it and change its color', async t => {
-    await projectsPage.createNewProject(PROJECT.NAME, PROJECT.COLOR.BERRY_RED.NAME, PROJECT.FAVORITE)
-    await t.click(sidebarOptions.favoriteProjectLabel.withText(PROJECT.NAME))
-    await t.expect(await projectsPage.validateProject(PROJECT.NAME, PROJECT.COLOR.BERRY_RED.NAME, PROJECT.FAVORITE)).ok()
+    await sidebarOptions.createNewProject(PROJECT.FAVORITE.NAME, PROJECT.FAVORITE.COLOR, PROJECT.FAVORITE.IS_FAVORITE)
+    await t.click(sidebarOptions.favoriteProjectLabel.withText(PROJECT.FAVORITE.NAME))
+    await t.expect(await projectsPage.validateProject(PROJECT.FAVORITE.NAME, PROJECT.FAVORITE.COLOR, PROJECT.FAVORITE.IS_FAVORITE)).ok()
 })
