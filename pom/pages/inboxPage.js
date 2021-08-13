@@ -8,14 +8,15 @@ class inboxPage {
         this.dueDateSublabel = Selector('.task_list_item__info_tags')
     }
 
-    async deleteAllTasks(inboxTaskLabels){
-        await t.click(sidebarOptions.inboxButton)   
+    async deleteAllTasks(){
+        await t.click(sidebarOptions.inboxButton)
         let totalTasks = await this.inboxTaskLabels.count
-        for(let i = totalTasks; i >= 0; i--){
-            if(totalTasks>0){
-            await t.click(this.checkTaskButton)
+        if (totalTasks > 0) {
+            do {
+                await t.click(this.checkTaskButton)
+                totalTasks = await this.inboxTaskLabels.count
             }
-            totalTasks--
+            while (totalTasks > 0);
         }
     }
 }

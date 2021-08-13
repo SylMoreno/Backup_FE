@@ -46,12 +46,18 @@ export const PROJECT = {
     COLOR: {
         BERRY_RED: 
         {
-            NAME: "Berry Red",
-            RGB: "rgb(184, 37, 95)"
+            NAME: "Berry Red"
         },
-        RED: "rgb(219, 64, 53)",
-        ORANGE: "rgb(255, 153, 51)",
-        YELLOW: "rgb(250, 208, 0)",
-        OLIVE_GREEN: "rgb(175, 184, 59)"
-    }
+        RED: {
+            NAME: "Red"
+        },
+        ORANGE: {
+            NAME: "Orange"
+        },
+        YELLOW: {
+            NAME: "Yellow"
+        }
+    },
+    FAVORITE: true,
+    NON_FAVORITE: false
 }

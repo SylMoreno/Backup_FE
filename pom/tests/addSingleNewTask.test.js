@@ -6,7 +6,7 @@ import inboxPage from '../pages/inboxPage'
 fixture('Add task feature test')
     .beforeEach(async t => {
         await t.useRole(validUser)
-        await inboxPage.deleteAllTasks(inboxPage.inboxTaskLabels)
+        await inboxPage.deleteAllTasks()
         await t.expect(inboxPage.inboxTaskLabels.exists).notOk()
         await t.wait(3000)
     })
