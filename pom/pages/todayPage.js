@@ -39,7 +39,6 @@ class todayPage{
                     .pressKey('esc')
                     .click(basePage.inboxButton)
                     await t.expect(await this.validateTaskNumber(TASK_NUMBER)).ok()
-                    await t.expect(this.inboxTaskLabels.innerText).contains(TASK_NAME)
                 }
                 else {
                     for(let i = 1; i <= TASK_NUMBER; i++){
