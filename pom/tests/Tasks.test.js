@@ -1,7 +1,7 @@
 import { validUser } from '../data/Roles'
 import {TASK} from '../data/Constants'
 import todayPage from '../pages/todayPage'
-import inboxPage from '../pages/inboxPage'
+import inboxPage from '../pages/InboxPage'
 
 fixture('Add task feature test')
     .beforeEach(async t => {
@@ -18,7 +18,7 @@ test.meta('type', 'smoke')('As a valid user, I should be able to add a new task 
 
 test.only('As a valid user, I should be able to add a new task with Tomorrow as due date', async t => {
     await todayPage.addNewTask(TASK.SINGLE.NUMBER, TASK.SINGLE.DUE.TOMORROW, TASK.SINGLE.NAME)
-    await t.expect(inboxPage.inboxTaskLabels.innerText).contains(TASK.SINGLE.NAME)
+    //
     await t.expect(inboxPage.dueDateSublabel.innerText).contains(TASK.SINGLE.DUE.TOMORROW)
 })
 

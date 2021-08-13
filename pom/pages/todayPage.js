@@ -1,5 +1,6 @@
 import {Selector, t} from 'testcafe'
 import basePage from './BasePage'
+import inboxPage from './InboxPage'
 
 class todayPage{
     constructor(){
@@ -38,6 +39,7 @@ class todayPage{
                     .pressKey('esc')
                     .click(basePage.inboxButton)
                     await t.expect(await this.validateTaskNumber(TASK_NUMBER)).ok()
+                    await t.expect(this.inboxTaskLabels.innerText).contains(TASK_NAME)
                 }
                 else {
                     for(let i = 1; i <= TASK_NUMBER; i++){
@@ -50,6 +52,7 @@ class todayPage{
                         .pressKey('enter')
                         .pressKey('esc')
                         .click(basePage.inboxButton)
+                        .expect(inboxPage.inboxTaskLabels.innerText).contains(TASK_NAME)
                     }
                     await t.expect(await this.validateTaskNumber(TASK_NUMBER)).ok()
                 }
