@@ -1,5 +1,4 @@
 import {Selector, t} from 'testcafe'
-import todayPage from './TodayPage'
 
 class upcomingPage{
     constructor(){
