@@ -1,7 +1,12 @@
 import { Selector, t } from 'testcafe'
 
-class basePage {
+class BasePage {
     constructor(){
+        //Top Menu options
+        this.addQuickTaskicon = Selector('#quick_add_task_holder')
+        //Quick tasks modal items
+        this.quickTaskTitleInput = Selector('div[class="richtextinput"]')
+        this.quickTaskAddButton = Selector('button').withText("Add task")
         //Left Menu options
         this.inboxButton = Selector('#filter_inbox')
         this.todayButton = Selector('#filter_today')
@@ -32,4 +37,4 @@ class basePage {
     }
 }
 
-export default new basePage()
+export default new BasePage()

@@ -1,7 +1,7 @@
 import { Role } from 'testcafe'
 import { URL, CREDENTIALS } from './Constants'
-import loginPage from '../pages/loginPage'
-import welcomePage from '../pages/welcomePage'
+import loginPage from '../pages/LoginPage'
+import welcomePage from '../pages/WelcomePage'
 
 export const validUser = Role(`${URL.SUT_URL}`, async t => {
     await t.click(welcomePage.loginButton)

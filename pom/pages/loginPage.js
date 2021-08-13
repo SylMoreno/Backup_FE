@@ -1,6 +1,6 @@
 import {Selector, t} from'testcafe'
 
-class loginPage{
+class LoginPage{
     constructor(){
         this.emailInput = Selector('#email')
         this.passwordInput = Selector('#password')
@@ -19,4 +19,4 @@ class loginPage{
     }
 }
 
-export default new loginPage()
+export default new LoginPage()
