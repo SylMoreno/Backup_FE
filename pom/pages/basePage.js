@@ -5,6 +5,7 @@ class basePage {
         //Left Menu options
         this.inboxButton = Selector('#filter_inbox')
         this.todayButton = Selector('#filter_today')
+        this.upcomingButton = Selector('#filter_upcoming')
         //Projects items
         this.sectionName = Selector('.sidebar_expansion_panel')
         this.plusProjectIcon = Selector('button[aria-label="Add Project"]')
