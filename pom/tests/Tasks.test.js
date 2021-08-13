@@ -16,9 +16,9 @@ test.meta('type', 'smoke')('As a valid user, I should be able to add a new task 
     await t.expect(TodayPage.taskLabel.innerText).contains(TASK.SINGLE.NAME)
 })
 
-test('As a valid user, I should be able to add a new task with Tomorrow as due date', async t => {
+test.only('As a valid user, I should be able to add a new task with Tomorrow as due date', async t => {
     await TodayPage.addNewTask(TASK.SINGLE.NUMBER, TASK.SINGLE.DUE.TOMORROW, TASK.SINGLE.NAME)
-    await t.expect(TodayPage.taskLabel.innerText).contains(TASK.SINGLE.NAME)
+    await t.expect(InboxPage.inboxTaskLabels.innerText).contains(TASK.SINGLE.NAME)
     await t.expect(InboxPage.dueDateSublabel.innerText).contains(TASK.SINGLE.DUE.TOMORROW)
 })
 
