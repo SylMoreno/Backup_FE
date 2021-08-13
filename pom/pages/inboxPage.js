@@ -1,7 +1,7 @@
 import { Selector, t } from 'testcafe'
-import BasePage from './BasePage'
+import basePage from './BasePage'
 
-class InboxPage {
+class inboxPage {
     constructor(){
         this.inboxTaskLabels = Selector('.task_list_item')
         this.checkTaskButton = Selector('.task_checkbox__circle')
@@ -9,7 +9,7 @@ class InboxPage {
     }
 
     async deleteAllTasks(){
-        await t.click(BasePage.inboxButton)
+        await t.click(basePage.inboxButton)
         let totalTasks = await this.inboxTaskLabels.count
         if (totalTasks > 0) {
             do {
@@ -21,4 +21,4 @@ class InboxPage {
     }
 }
 
-export default new InboxPage()
+export default new inboxPage()

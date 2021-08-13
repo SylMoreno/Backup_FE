@@ -1,9 +1,9 @@
 import {Selector} from 'testcafe'
 
-class  WelcomePage{
+class  welcomePage{
     constructor(){
         this.loginButton = Selector('a').withText("Log in")
     }
 }
 
-export default new WelcomePage()
+export default new welcomePage()

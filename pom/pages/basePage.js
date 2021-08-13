@@ -1,6 +1,6 @@
 import { Selector, t } from 'testcafe'
 
-class BasePage {
+class basePage {
     constructor(){
         //Left Menu options
         this.inboxButton = Selector('#filter_inbox')
@@ -32,4 +32,4 @@ class BasePage {
     }
 }
 
-export default new BasePage()
+export default new basePage()
