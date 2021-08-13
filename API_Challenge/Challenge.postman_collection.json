@@ -892,9 +892,7 @@
 											"//Status codes",
 											"pm.test(\"Status code is 404 Not Found\", function () {",
 											"    pm.response.to.have.status(404);",
-											"});",
-											"",
-											"pm.environment.unset(project_id)"
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -1086,7 +1084,7 @@
 									"script": {
 										"exec": [
 											"pm.environment.set(\"unexistingId\", 0000)",
-											"pm.environment.unset(task_id)"
+											""
 										],
 										"type": "text/javascript"
 									}
