@@ -4,8 +4,11 @@ import basePage from './BasePage'
 class inboxPage {
     constructor(){
         this.inboxTaskLabels = Selector('.task_list_item')
-        this.checkTaskButton = Selector('.task_checkbox__circle')
+        // This.checkTaskButton = Selector('.task_checkbox__circle')
         this.dueDateSublabel = Selector('.task_list_item__info_tags')
+        // Task modal options
+        this.deleteTaskOption = Selector('.icon_menu_item__content').withText("Delete task")
+        this.confirmDeleteModal = Selector('button[class="ist_button ist_button_red"]').withText("Delete")
     }
 
     async deleteAllTasks(){
@@ -13,7 +16,10 @@ class inboxPage {
         let totalTasks = await this.inboxTaskLabels.count
         if (totalTasks > 0) {
             do {
-                await t.click(this.checkTaskButton)
+                await t
+                .rightClick(this.inboxTaskLabels)
+                .click(this.deleteTaskOption)
+                .click(this.confirmDeleteModal)
                 totalTasks = await this.inboxTaskLabels.count
             }
             while (totalTasks > 0);
