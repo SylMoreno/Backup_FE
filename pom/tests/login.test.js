@@ -9,11 +9,10 @@ fixture('Login feature test')
     await t.click(WelcomePage.loginButton)
 })
 
-test.meta('type', 'smoke')("As a user, I should be able to log in successfully using valid credentials", async t => {
+test.only.meta('type', 'smoke')("As a user, I should be able to log in successfully using valid credentials", async t => {
     
     await loginPage.submitLoginForm(CREDENTIALS.VALID_USER.MAIL, CREDENTIALS.VALID_USER.PASSWORD)
-    await t.wait(5000)
-    .expect(todayPage.headerTitle.exists).ok()
+    await t.expect(todayPage.headerTitle.exists).ok()
 })
 
 test("As a valid user, I should not be able to log if I am not providing credentials", async t => {

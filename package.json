@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "run-all-tests": "testcafe chrome:headless pom/tests --reporter html:Reports/report.html",
-    "login-feature-chrome": "testcafe chrome:headless pom/tests/Login.test.js",
+    "login-feature-chrome": "testcafe chrome pom/tests/Login.test.js",
     "login-feature-multibrowser": "testcafe chrome:headless,firefox:headless,safari pom/tests/Login.test.js",
     "add-NewTask-feature": "testcafe chrome:headless pom/tests/Tasks.test.js",
     "add-NewProject-feature": "testcafe chrome:headless pom/tests/Projects.test.js",
